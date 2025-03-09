@@ -7,6 +7,10 @@ ENV PIP_NO_CACHE_DIR=off \
 
 WORKDIR /django_web
 
+RUN apt-get update && apt-get install -y \
+    postgresql-client \
+    && rm -rf /var/lib/apt/lists/*
+
 COPY . /django_web
 
 RUN pip install --no-cache-dir -r requirements.txt
