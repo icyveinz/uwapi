@@ -8,7 +8,7 @@ services:
       - "8000:8000"
     depends_on:
       - db
-      - django_app
+      - django_web
     networks:
       - combined-network
   db:
@@ -22,10 +22,10 @@ services:
       - ./postgres_data:/var/lib/postgresql/data
     networks:
       - combined-network
-  django_app:
-    build: ./django_app
+  django_web:
+    build: ./django_web
     command: python main.py
-    container_name: django_app
+    container_name: django_web
     depends_on:
       - db
     networks:
