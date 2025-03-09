@@ -46,7 +46,7 @@ class Order(models.Model):
         ordering = ["-timestamp"]
 
     def __str__(self):
-        return f"Order {self.id} - {self.status}"
+        return f"Заказ {self.id} - {self.status}"
 
     @property
     def comments_count(self):

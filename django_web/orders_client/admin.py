@@ -6,17 +6,17 @@ from orders_client.models import Order, Comment
 
 @admin.action(description=rus["actions"]["declined"])
 def mark_as_declined(modeladmin, request, queryset):
-    queryset.update(status="Отказ")
+    queryset.update(status=rus["models"]["order"]["status_choices"]["declined"])
 
 
 @admin.action(description=rus["actions"]["in_process"])
 def mark_in_progress(modeladmin, request, queryset):
-    queryset.update(status="В процессе")
+    queryset.update(status=rus["models"]["order"]["status_choices"]["in_process"])
 
 
 @admin.action(description=rus["actions"]["as_completed"])
 def mark_as_completed(modeladmin, request, queryset):
-    queryset.update(status="Завершен")
+    queryset.update(status=rus["models"]["order"]["status_choices"]["completed"])
 
 
 class CommentInline(admin.TabularInline):
@@ -37,7 +37,7 @@ class OrderAdmin(admin.ModelAdmin):
         "timestamp",
     )
     list_per_page = 10
-    search_fields = ["customer_name", "customer_email"]
+    search_fields = ["customer_name", "customer_email", "customer_description"]
     list_filter = ["status", "parent"]
     list_editable = ["status"]
     inlines = [CommentInline]
