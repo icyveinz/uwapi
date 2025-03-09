@@ -24,3 +24,6 @@ sync:
 async:
 	cls
 	uvicorn django_web.asgi:application --reload --port 8001
+gen:
+	cls
+	pip freeze > requirements.txt
