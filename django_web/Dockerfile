@@ -13,6 +13,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 ENV PYTHONPATH=/django_web
 
-RUN python manage.py collectstatic --noinput
+COPY entrypoint.sh /django_web/entrypoint.sh
 
-CMD ["gunicorn", "--bind", "0.0.0.0:8001", "django_web.wsgi:application"]
+RUN chmod +x /django_web/entrypoint.sh
+
+ENTRYPOINT ["/django_web/entrypoint.sh"]
