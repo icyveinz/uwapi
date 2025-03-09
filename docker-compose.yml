@@ -8,7 +8,7 @@ services:
       - "8000:8000"
     depends_on:
       - db
-      - myapi
+      - django_app
     networks:
       - combined-network
   db:
