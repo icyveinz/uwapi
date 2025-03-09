@@ -1,19 +1,20 @@
 # Register your models here.
 from django.contrib import admin
+from lexicon import rus
 from orders_client.models import Order, Comment
 
 
-@admin.action(description="Установить 'Отказ' для выбранных")
+@admin.action(description=rus['actions']['declined'])
 def mark_as_declined(modeladmin, request, queryset):
     queryset.update(status="Отказ")
 
 
-@admin.action(description="Установить 'В процессе' для выбранных")
+@admin.action(description=rus['actions']['in_process'])
 def mark_in_progress(modeladmin, request, queryset):
     queryset.update(status="В процессе")
 
 
-@admin.action(description="Установить 'Завершен' для выбранных")
+@admin.action(description=rus['actions']['as_completed'])
 def mark_as_completed(modeladmin, request, queryset):
     queryset.update(status="Завершен")
 
