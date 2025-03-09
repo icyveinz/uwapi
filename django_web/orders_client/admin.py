@@ -11,7 +11,14 @@ class CommentInline(admin.TabularInline):
 
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ( "parent", "status", "customer_name", "customer_email", "customer_description", "timestamp")
+    list_display = (
+        "parent",
+        "status",
+        "customer_name",
+        "customer_email",
+        "customer_description",
+        "timestamp",
+    )
     search_fields = ["customer_name", "customer_email"]
     list_filter = ["status", "parent"]
     list_editable = ["status"]  # Делаем статус редактируемым
