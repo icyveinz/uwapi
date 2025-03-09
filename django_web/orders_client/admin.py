@@ -2,17 +2,21 @@
 from django.contrib import admin
 from orders_client.models import Order, Comment
 
+
 @admin.action(description="Установить 'Отказ' для выбранных")
 def mark_as_declined(modeladmin, request, queryset):
     queryset.update(status="Отказ")
+
 
 @admin.action(description="Установить 'В процессе' для выбранных")
 def mark_in_progress(modeladmin, request, queryset):
     queryset.update(status="В процессе")
 
+
 @admin.action(description="Установить 'Завершен' для выбранных")
 def mark_as_completed(modeladmin, request, queryset):
     queryset.update(status="Завершен")
+
 
 class CommentInline(admin.TabularInline):
     model = Comment
