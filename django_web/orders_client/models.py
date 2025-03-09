@@ -1,16 +1,17 @@
 from django.db import models
 
+
 class Order(models.Model):
     STATUS_CHOICES = [
-        ('Не обработан', 'Не обработан'),
-        ('Отказ', 'Отказ'),
-        ('В процессе', 'В процессе'),
-        ('Завершен', 'Завершен'),
+        ("Не обработан", "Не обработан"),
+        ("Отказ", "Отказ"),
+        ("В процессе", "В процессе"),
+        ("Завершен", "Завершен"),
     ]
 
     PARENT_CHOICES = [
-        ('UGO', 'UGO'),
-        ('WGL', 'WGL'),
+        ("UGO", "UGO"),
+        ("WGL", "WGL"),
     ]
 
     id = models.AutoField(primary_key=True)
@@ -22,7 +23,7 @@ class Order(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ['-timestamp']
+        ordering = ["-timestamp"]
 
     def __str__(self):
         return f"Order {self.id} - {self.status}"
