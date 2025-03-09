@@ -24,7 +24,6 @@ services:
       - combined-network
   django_web:
     build: ./django_web
-    command: python main.py
     container_name: django_web
     depends_on:
       - db
