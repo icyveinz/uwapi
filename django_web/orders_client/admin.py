@@ -2,6 +2,17 @@
 from django.contrib import admin
 from orders_client.models import Order, Comment
 
+@admin.action(description="Установить 'Отказ' для выбранных")
+def mark_as_declined(modeladmin, request, queryset):
+    queryset.update(status="Отказ")
+
+@admin.action(description="Установить 'В процессе' для выбранных")
+def mark_in_progress(modeladmin, request, queryset):
+    queryset.update(status="В процессе")
+
+@admin.action(description="Установить 'Завершен' для выбранных")
+def mark_as_completed(modeladmin, request, queryset):
+    queryset.update(status="Завершен")
 
 class CommentInline(admin.TabularInline):
     model = Comment
@@ -25,6 +36,7 @@ class OrderAdmin(admin.ModelAdmin):
     list_filter = ["status", "parent"]
     list_editable = ["status"]
     inlines = [CommentInline]
+    actions = [mark_as_declined, mark_in_progress, mark_as_completed]
 
     def comments_count(self, obj):
         return obj.comments.count()
