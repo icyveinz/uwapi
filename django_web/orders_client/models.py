@@ -28,6 +28,10 @@ class Order(models.Model):
     def __str__(self):
         return f"Order {self.id} - {self.status}"
 
+    @property
+    def comments_count(self):
+        return self.comments.all().count()
+
 
 class Comment(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name="comments")
