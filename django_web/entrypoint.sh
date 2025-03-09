@@ -9,6 +9,7 @@ done
 echo "PostgreSQL is ready. Running migrations..."
 
 # Run migrations
+python manage.py makemigrations orders_client
 python manage.py migrate --noinput
 
 # Collect static files (optional if needed)
