@@ -20,9 +20,10 @@ class OrderAdmin(admin.ModelAdmin):
         "comments_count",
         "timestamp",
     )
+    list_per_page = 10
     search_fields = ["customer_name", "customer_email"]
     list_filter = ["status", "parent"]
-    list_editable = ["status"]  # Делаем статус редактируемым
+    list_editable = ["status"]
     inlines = [CommentInline]
 
     def comments_count(self, obj):
