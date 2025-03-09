@@ -28,11 +28,14 @@ class Order(models.Model):
     def __str__(self):
         return f"Order {self.id} - {self.status}"
 
+
 class Comment(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name="comments")
     comment = models.TextField(verbose_name="Комментарий")
     created_at = models.DateTimeField(auto_now_add=True)
+
     class Meta:
         ordering = ["-created_at"]
+
     def __str__(self):
         return f"Комментарий к заказу {self.order.id}"
