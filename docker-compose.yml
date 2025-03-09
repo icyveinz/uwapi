@@ -1,0 +1,35 @@
+version: "3.4"
+services:
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - myapi
+    networks:
+      - combined-network
+  db:
+    image: postgres:15
+    container_name: db
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: applications_db
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+    networks:
+      - combined-network
+  django_app:
+    build: ./django_app
+    command: python main.py
+    container_name: django_app
+    depends_on:
+      - db
+    networks:
+      - combined-network
+networks:
+  combined-network:
+    driver: bridge
