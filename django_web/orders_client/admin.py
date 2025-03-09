@@ -38,7 +38,11 @@ class OrderAdmin(admin.ModelAdmin):
     )
     list_per_page = 10
     search_fields = ["customer_name", "customer_email", "customer_description"]
-    list_filter = ["status", "parent"]
+    list_filter = [
+        "status",
+        "parent",
+        ("timestamp", admin.DateFieldListFilter),
+    ]
     list_editable = ["status"]
     inlines = [CommentInline]
     actions = [mark_as_declined, mark_in_progress, mark_as_completed]
