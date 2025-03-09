@@ -1,3 +1,4 @@
+# Create your views here.
 from rest_framework.views import APIView
 from orders_client.models import Order
 from orders_client.serializers import CustomerSerializer
