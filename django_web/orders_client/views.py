@@ -16,22 +16,22 @@ class CustomerCreateView(APIView):
                 Order.objects.create(
                     parent="UGO",
                     status="Не обработан",
-                    customer_name=customer_data['name'],
-                    customer_email=customer_data['email'],
-                    customer_description=customer_data['about_customer']
+                    customer_name=customer_data["name"],
+                    customer_email=customer_data["email"],
+                    customer_description=customer_data["about_customer"],
                 )
-                return Response({
-                    "is_succeed": True,
-                    "message": rus['template_success']
-                }, status=status.HTTP_201_CREATED)
+                return Response(
+                    {"is_succeed": True, "message": rus["template_success"]},
+                    status=status.HTTP_201_CREATED,
+                )
 
             except Exception as e:
-                return Response({
-                    "is_succeed": False,
-                    "message": str(e)
-                }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+                return Response(
+                    {"is_succeed": False, "message": str(e)},
+                    status=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                )
 
-        return Response({
-            "is_succeed": False,
-            "message": "Invalid data"
-        }, status=status.HTTP_400_BAD_REQUEST)
+        return Response(
+            {"is_succeed": False, "message": "Invalid data"},
+            status=status.HTTP_400_BAD_REQUEST,
+        )
