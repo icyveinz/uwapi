@@ -18,3 +18,9 @@ create:
 genuser:
 	cls
 	python manage.py createsuperuser
+sync:
+	cls
+	python manage.py runserver
+async:
+	cls
+	uvicorn django_web.asgi:application --reload --port 8001
