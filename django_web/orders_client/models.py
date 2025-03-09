@@ -5,15 +5,33 @@ from lexicon import rus
 
 class Order(models.Model):
     STATUS_CHOICES = [
-        (rus['models']['order']['status_choices']['unseen'], rus['models']['order']['status_choices']['unseen']),
-        (rus['models']['order']['status_choices']['declined'], rus['models']['order']['status_choices']['declined']),
-        (rus['models']['order']['status_choices']['in_process'], rus['models']['order']['status_choices']['in_process']),
-        (rus['models']['order']['status_choices']['completed'], rus['models']['order']['status_choices']['completed']),
+        (
+            rus["models"]["order"]["status_choices"]["unseen"],
+            rus["models"]["order"]["status_choices"]["unseen"],
+        ),
+        (
+            rus["models"]["order"]["status_choices"]["declined"],
+            rus["models"]["order"]["status_choices"]["declined"],
+        ),
+        (
+            rus["models"]["order"]["status_choices"]["in_process"],
+            rus["models"]["order"]["status_choices"]["in_process"],
+        ),
+        (
+            rus["models"]["order"]["status_choices"]["completed"],
+            rus["models"]["order"]["status_choices"]["completed"],
+        ),
     ]
 
     PARENT_CHOICES = [
-        (rus['models']['order']['parent_choices']['ugo'], rus['models']['order']['parent_choices']['ugo']),
-        (rus['models']['order']['parent_choices']['wgl'], rus['models']['order']['parent_choices']['wgl']),
+        (
+            rus["models"]["order"]["parent_choices"]["ugo"],
+            rus["models"]["order"]["parent_choices"]["ugo"],
+        ),
+        (
+            rus["models"]["order"]["parent_choices"]["wgl"],
+            rus["models"]["order"]["parent_choices"]["wgl"],
+        ),
     ]
 
     id = models.AutoField(primary_key=True)

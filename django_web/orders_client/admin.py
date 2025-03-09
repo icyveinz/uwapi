@@ -4,17 +4,17 @@ from lexicon import rus
 from orders_client.models import Order, Comment
 
 
-@admin.action(description=rus['actions']['declined'])
+@admin.action(description=rus["actions"]["declined"])
 def mark_as_declined(modeladmin, request, queryset):
     queryset.update(status="Отказ")
 
 
-@admin.action(description=rus['actions']['in_process'])
+@admin.action(description=rus["actions"]["in_process"])
 def mark_in_progress(modeladmin, request, queryset):
     queryset.update(status="В процессе")
 
 
-@admin.action(description=rus['actions']['as_completed'])
+@admin.action(description=rus["actions"]["as_completed"])
 def mark_as_completed(modeladmin, request, queryset):
     queryset.update(status="Завершен")
 
