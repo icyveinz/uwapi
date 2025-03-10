@@ -1,29 +1,21 @@
 import asyncio
 import os
-from telegram import Bot
+
 from faststream.nats import NatsBroker
 from dotenv import load_dotenv
+from config import Config
+from telegram_actions import init_bot
 
 load_dotenv("deploy.env")
 
-NATS_URL = os.getenv("NATS_URL", "nats://nats:4222")
-TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
-CHAT_ID = os.getenv("CHAT_ID")
+config = Config()
 
-broker = NatsBroker(NATS_URL)
-
-async def init_bot():
-    bot = Bot(TELEGRAM_TOKEN)
-    print('Bot for Telegram is initialized')
-    return bot
-
-async def bot_send_message(bot: Bot, message: str):
-    await bot.send_message(chat_id=CHAT_ID, text=message)
+broker = NatsBroker(config.NATS_URL)
 
 @broker.subscriber("new.customer")
 async def process_message(message: dict):
     print(f"Received message: {message}")
-    bot = await init_bot()
+    bot = await init_bot(config)
     #await bot_send_message(bot, f"New customer: {message}")
 
 async def main():
