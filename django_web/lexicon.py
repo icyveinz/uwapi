@@ -8,14 +8,14 @@ rus = {
                 "completed": "Завершен",
             },
             "parent_choices": {"ugo": "UGO", "wgl": "WGL"},
-            "fields_alias" : {
-                "parent" : "Источник",
-                "status" : "Статус",
-                "customer_name" : "Имя заказчика",
-                "customer_email" : "EMAIL",
-                "customer_description" : "Описание",
-                "timestamp" : "Когда получен"
-            }
+            "fields_alias": {
+                "parent": "Источник",
+                "status": "Статус",
+                "customer_name": "Имя заказчика",
+                "customer_email": "EMAIL",
+                "customer_description": "Описание",
+                "timestamp": "Когда получен",
+            },
         }
     },
     "template_success": "Ваш запрос был отправлен! Мы свяжемся с вами как можно скорее.",

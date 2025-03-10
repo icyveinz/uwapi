@@ -1,5 +1,6 @@
 import os
 
+
 class Config:
     def __init__(self):
         self.NATS_URL = os.getenv("NATS_URL", "nats://nats:4222")

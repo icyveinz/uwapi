@@ -35,20 +35,28 @@ class Order(models.Model):
     ]
 
     id = models.AutoField(primary_key=True)
-    parent = models.CharField(max_length=50,
-                              choices=PARENT_CHOICES,
-                              verbose_name=rus['models']['order']['fields_alias']['parent']
-                              )
-    status = models.CharField(max_length=50,
-                              choices=STATUS_CHOICES,
-                              verbose_name=rus['models']['order']['fields_alias']['status']
-                              )
-    customer_name = models.TextField(verbose_name=rus['models']['order']['fields_alias']['customer_name'])
-    customer_email = models.EmailField(verbose_name=rus['models']['order']['fields_alias']['customer_email'])
-    customer_description = models.TextField(verbose_name=rus['models']['order']['fields_alias']['customer_description'])
+    parent = models.CharField(
+        max_length=50,
+        choices=PARENT_CHOICES,
+        verbose_name=rus["models"]["order"]["fields_alias"]["parent"],
+    )
+    status = models.CharField(
+        max_length=50,
+        choices=STATUS_CHOICES,
+        verbose_name=rus["models"]["order"]["fields_alias"]["status"],
+    )
+    customer_name = models.TextField(
+        verbose_name=rus["models"]["order"]["fields_alias"]["customer_name"]
+    )
+    customer_email = models.EmailField(
+        verbose_name=rus["models"]["order"]["fields_alias"]["customer_email"]
+    )
+    customer_description = models.TextField(
+        verbose_name=rus["models"]["order"]["fields_alias"]["customer_description"]
+    )
     timestamp = models.DateTimeField(
         auto_now_add=True,
-        verbose_name=rus['models']['order']['fields_alias']['timestamp']
+        verbose_name=rus["models"]["order"]["fields_alias"]["timestamp"],
     )
 
     class Meta:
