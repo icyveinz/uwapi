@@ -1,6 +1,21 @@
 version: "3.4"
 
 services:
+  nats:
+    image: nats:latest
+    container_name: nats_server
+    restart: unless-stopped
+    networks:
+      - combined-network
+    
+  nats_worker:
+    build: ./nats_worker
+    container_name : nats_worker
+    depends_on:
+      - nats
+    networks:
+      - combined-network
+
   nginx:
     build: ./nginx
     container_name: nginx

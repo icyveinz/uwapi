@@ -1,8 +1,10 @@
 # Create your views here.
+import asyncio
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from lexicon import rus
+from nats_publisher.client import send_message
 from orders_client.models import Order
 from orders_client.serializers import CustomerSerializer
 
@@ -21,6 +23,9 @@ class CustomerCreateView(APIView):
                         customer_email=customer_data["email"],
                         customer_description=customer_data["about_customer"],
                     )
+
+                    asyncio.run(send_message("new.customer", customer_data))
+
                     return Response(
                         {"is_succeed": True, "message": rus["template_success"]},
                         status=status.HTTP_201_CREATED,
