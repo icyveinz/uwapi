@@ -50,7 +50,7 @@ class OrderAdmin(admin.ModelAdmin):
     def comments_count(self, obj):
         return obj.comments.count()
 
-    comments_count.short_description = "Comments"
+    comments_count.short_description = "Комментарии"
 
 
 admin.site.register(Order, OrderAdmin)

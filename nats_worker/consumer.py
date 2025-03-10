@@ -13,7 +13,7 @@ broker = NatsBroker(config.NATS_URL)
 @broker.subscriber("new.customer")
 async def process_message(message: dict):
     print(f"Received message: {message}")
-    bot = await init_bot(config)
+    #bot = await init_bot(config)
     #await bot_send_message(bot, f"New customer: {message}")
 
 async def main():
