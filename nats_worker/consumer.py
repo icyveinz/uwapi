@@ -1,6 +1,4 @@
 import asyncio
-import os
-
 from faststream.nats import NatsBroker
 from dotenv import load_dotenv
 from config import Config
