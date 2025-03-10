@@ -6,6 +6,7 @@ NATS_URL = os.getenv("NATS_URL", "nats://nats:4222")
 
 broker = NatsBroker(NATS_URL)
 
+
 @broker.subscriber("new.customer")
 async def process_message(message: dict):
     print(f"Received message: {message}")
