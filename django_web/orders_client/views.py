@@ -1,5 +1,6 @@
 # Create your views here.
 import asyncio
+from django.forms.models import model_to_dict
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -16,7 +17,7 @@ class CustomerCreateView(APIView):
             customer_data = serializer.validated_data
             try:
                 if parent == "ugo" or parent == "wgl":
-                    Order.objects.create(
+                    order = Order.objects.create(
                         parent=parent.upper(),
                         status="Не обработан",
                         customer_name=customer_data["name"],
@@ -24,7 +25,7 @@ class CustomerCreateView(APIView):
                         customer_description=customer_data["about_customer"],
                     )
 
-                    asyncio.run(send_message("new.customer", customer_data))
+                    asyncio.run(send_message("new.customer", model_to_dict(order)))
 
                     return Response(
                         {"is_succeed": True, "message": rus["template_success"]},
