@@ -26,7 +26,5 @@ def format_the_message(message: dict) -> str:
 
 async def bot_send_message(config: Config, bot: Bot, message: str):
     await bot.send_message(
-        chat_id=config.CHAT_ID,
-        text=message,
-        parse_mode=ParseMode.MARKDOWN_V2
+        chat_id=config.CHAT_ID, text=message, parse_mode=ParseMode.MARKDOWN_V2
     )
