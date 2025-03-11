@@ -2,7 +2,7 @@ import asyncio
 from faststream.nats import NatsBroker
 from dotenv import load_dotenv
 from config import Config
-from telegram_actions import format_the_message
+from telegram_actions import format_the_message, init_bot, bot_send_message
 
 load_dotenv("deploy.env")
 
@@ -14,9 +14,8 @@ broker = NatsBroker(config.NATS_URL)
 @broker.subscriber("new.customer")
 async def process_message(message: dict):
     print(f"Received message: {message}")
-    print(f"Formatted message {format_the_message(message)}")
-    # bot = await init_bot(config)
-    # await bot_send_message(bot, f"New customer: {message}")
+    bot = await init_bot(config)
+    await bot_send_message(config, bot, format_the_message(message))
 
 
 async def main():
