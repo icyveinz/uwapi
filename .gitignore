@@ -1,4 +1,6 @@
-/mysql_data
+.idea/
+__pycache__/
+postgres_data/
 /static
 /quizlet_bot/.idea
 /quizlet_bot/.venv
