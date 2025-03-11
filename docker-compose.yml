@@ -23,7 +23,7 @@ services:
     volumes:
       - ./static:/django_web/static
     ports:
-      - "8000:8000"
+      - "80:80"
     depends_on:
       - db
       - django_web
