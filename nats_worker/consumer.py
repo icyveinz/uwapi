@@ -10,6 +10,7 @@ config = Config()
 
 broker = NatsBroker(config.NATS_URL)
 
+
 @broker.subscriber("new.customer")
 async def process_message(message: dict):
     print(f"Received message: {message}")
