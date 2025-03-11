@@ -16,6 +16,6 @@ class CustomerSerializer(serializers.Serializer):
         email_regex = r"^[\w\.-]+@[\w\.-]+\.\w+$"
 
         if not (re.fullmatch(phone_regex, value) or re.fullmatch(email_regex, value)):
-            raise serializers.ValidationError(rus['email_error'])
+            raise serializers.ValidationError(rus["email_error"])
 
         return value
