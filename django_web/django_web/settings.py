@@ -27,7 +27,7 @@ SECRET_KEY = "django-insecure-ehgmu&$#eg@3v#xbio)+wrijyq!6a1*-y#=@bl9qan06rl5ob+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -130,7 +130,13 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")  # Without the trailing slash
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:8000",
-    "https://localhost:8000",
-    "http://127.0.0.1:8000",
+    "https://ugo-vape.ru",
+    "https://walgreenlogistics.ru",
+    "https://*",
+    "http://*",
+]
+
+CORS_ALLOWED_ORIGINS = [
+    "https://ugo-vape.ru",
+    "https://walgreenlogistics.ru",
 ]
