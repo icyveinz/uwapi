@@ -131,9 +131,11 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 CSRF_TRUSTED_ORIGINS = [
     "https://ugo-vape.ru",
+    "http://ugo-vape.ru",
     "https://walgreenlogistics.ru",
-    "https://*",
-    "http://*",
+    "http://walgreenlogistics.ru",
+    "https://trustedapi.space",
+    "http://trustedapi.space",
 ]
 
 CORS_ALLOWED_ORIGINS = [
