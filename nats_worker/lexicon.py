@@ -6,6 +6,6 @@ rus = {
         "👤 Имя заказчика: '{customer_name}'\n"
         "✉️ Почтовый адрес: '{customer_email}'\n"
         "📝 Описание заявки:\n"
-        "```\n{customer_description}\n```"
+        "```{customer_description}```"
     )
 }
