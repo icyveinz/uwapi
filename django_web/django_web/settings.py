@@ -146,10 +146,10 @@ CSRF_TRUSTED_ORIGINS = [
     "http://trustedapi.space",
 ]
 
-#CORS_ALLOWED_ORIGINS = [
+# CORS_ALLOWED_ORIGINS = [
 #   "https://ugo-vape.ru",
 #   "https://walgreenlogistics.ru",
-#]
+# ]
 
 CORS_ALLOW_ALL_ORIGINS = True
 
