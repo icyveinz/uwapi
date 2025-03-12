@@ -82,7 +82,7 @@ class Comment(models.Model):
 
 
 class Photo(models.Model):
-    image = models.ImageField(upload_to='photos/')
+    image = models.ImageField(upload_to="photos/")
     title = models.CharField(max_length=255, blank=True)
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
