@@ -56,6 +56,6 @@ class ReleaseImagesForWidget(APIView):
         photos = Photo.objects.all()
         image_links = [request.build_absolute_uri(photo.image.url) for photo in photos]
         return Response(
-            {"is_succeed" : True, "image_links": image_links},
+            {"is_succeed": True, "image_links": image_links},
             status=status.HTTP_200_OK,
         )
