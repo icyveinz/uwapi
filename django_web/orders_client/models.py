@@ -79,3 +79,12 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"Комментарий к заказу {self.order.id}"
+
+
+class Photo(models.Model):
+    image = models.ImageField(upload_to='photos/')
+    title = models.CharField(max_length=255, blank=True)
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title if self.title else f"Изображение {self.id}"

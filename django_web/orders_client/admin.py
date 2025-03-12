@@ -1,7 +1,7 @@
 # Register your models here.
 from django.contrib import admin
 from lexicon import rus
-from orders_client.models import Order, Comment
+from orders_client.models import Order, Comment, Photo
 
 
 @admin.action(description=rus["actions"]["declined"])
@@ -51,6 +51,10 @@ class OrderAdmin(admin.ModelAdmin):
         return obj.comments.count()
 
     comments_count.short_description = "Комментарии"
+
+@admin.register(Photo)
+class PhotoAdmin(admin.ModelAdmin):
+    list_display = ('id', 'title', 'uploaded_at', 'image')
 
 
 admin.site.register(Order, OrderAdmin)
