@@ -7,7 +7,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from lexicon import rus
 from nats_publisher.client import send_message
-from orders_client.models import Order
+from orders_client.models import Order, Photo
 from orders_client.serializers import CustomerSerializer
 
 
@@ -48,4 +48,14 @@ class CustomerCreateView(APIView):
         return Response(
             {"is_succeed": False, "message": rus["data_error"]},
             status=status.HTTP_400_BAD_REQUEST,
+        )
+
+
+class ReleaseImagesForWidget(APIView):
+    def get(self, request):
+        photos = Photo.objects.all()
+        image_links = [request.build_absolute_uri(photo.image.url) for photo in photos]
+        return Response(
+            {"is_succeed" : True, "image_links": image_links},
+            status=status.HTTP_200_OK,
         )
