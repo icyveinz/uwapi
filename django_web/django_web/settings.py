@@ -30,7 +30,7 @@ config = Config()
 SECRET_KEY = config.DJANGO_SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production! CHECKPOINT
-DEBUG = config.DEBUG
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 

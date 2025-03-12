@@ -1,5 +1,6 @@
 # Create your views here.
 import asyncio
+import sentry_sdk
 from django.forms.models import model_to_dict
 from rest_framework import status
 from rest_framework.response import Response
@@ -38,6 +39,7 @@ class CustomerCreateView(APIView):
                     )
 
             except Exception as e:
+                sentry_sdk.capture_exception(e)
                 return Response(
                     {"is_succeed": False, "message": str(e)},
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR,
