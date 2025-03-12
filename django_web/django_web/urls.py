@@ -18,11 +18,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+
 def trigger_error(request):
     _ = 1 / 0
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("orders_client/", include("orders_client.urls")),
-    path('sentry-debug/', trigger_error),
+    path("sentry-debug/", trigger_error),
 ]
