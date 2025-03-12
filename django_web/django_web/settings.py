@@ -12,20 +12,25 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 import os
 from pathlib import Path
-
+import sentry_sdk
+from dotenv import load_dotenv
+from config.config import Config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+load_dotenv(BASE_DIR / "deploy.env")
+
+config = Config()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-ehgmu&$#eg@3v#xbio)+wrijyq!6a1*-y#=@bl9qan06rl5ob+"
+SECRET_KEY = config.DJANGO_SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production! CHECKPOINT
-DEBUG = True
+DEBUG = config.DEBUG
 
 ALLOWED_HOSTS = ["*"]
 
@@ -143,3 +148,11 @@ CORS_ALLOWED_ORIGINS = [
     "https://ugo-vape.ru",
     "https://walgreenlogistics.ru",
 ]
+
+
+sentry_sdk.init(
+    dsn=config.SENTRY_DSN,
+    # Add data like request headers and IP for users,
+    # see https://docs.sentry.io/platforms/python/data-management/data-collected/ for more info
+    send_default_pii=True,
+)
