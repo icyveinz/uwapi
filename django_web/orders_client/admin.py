@@ -52,9 +52,10 @@ class OrderAdmin(admin.ModelAdmin):
 
     comments_count.short_description = "Комментарии"
 
+
 @admin.register(Photo)
 class PhotoAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'uploaded_at', 'image')
+    list_display = ("id", "title", "uploaded_at", "image")
 
 
 admin.site.register(Order, OrderAdmin)
