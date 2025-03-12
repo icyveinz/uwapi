@@ -27,6 +27,7 @@ services:
       - /etc/letsencrypt/live/trustedapi.space/fullchain.pem:/etc/ssl/certs/fullchain.pem:ro
       - /etc/letsencrypt/live/trustedapi.space/privkey.pem:/etc/ssl/private/privkey.pem:ro
       - ./static:/django_web/static
+      - ./media:/django_web/media
     depends_on:
       - db
       - django_web
@@ -50,6 +51,7 @@ services:
     container_name: django_web
     volumes:
       - ./static:/django_web/static
+      - ./media:/django_web/media
     depends_on:
       - db
     networks:
