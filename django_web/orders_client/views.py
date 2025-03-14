@@ -20,7 +20,7 @@ class CustomerCreateView(APIView):
                 if parent == "ugo" or parent == "wgl":
                     order = Order.objects.create(
                         parent=parent.upper(),
-                        status="Не обработан",
+                        status=rus['models']['order']['status_choices']['unseen'],
                         customer_name=customer_data["name"],
                         customer_email=customer_data["email"],
                         customer_description=customer_data["about_customer"],
