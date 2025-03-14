@@ -149,9 +149,9 @@ CSRF_TRUSTED_ORIGINS = [
 CORS_ALLOWED_ORIGINS = [
     "https://ugo-vape.ru",
     "https://walgreenlogistics.ru",
- ]
+]
 
-#CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOW_ALL_ORIGINS = True
 
 
 sentry_sdk.init(
