@@ -152,7 +152,7 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 # CORS_ALLOW_ALL_ORIGINS = True
-
+#
 
 sentry_sdk.init(
     dsn=config.SENTRY_DSN,
